@@ -411,7 +411,7 @@ public class ArchitectureInfrastructureService
                 rootPath,
                 filePathBase,
                 "Repositories",
-                "IBaseRepository.cs.cs"
+                "IBaseRepository.cs"
             );
 
         // Read content /Repositories/IBaseRepository.cs.txt
@@ -438,7 +438,7 @@ public class ArchitectureInfrastructureService
                 filePathBase,
                 "Repositories",
                 "Implementations",
-                "BaseRepository.cs.cs"
+                "BaseRepository.cs"
             );
 
         // Read content /Repositories/BaseRepository.cs.txt
