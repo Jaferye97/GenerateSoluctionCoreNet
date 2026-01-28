@@ -12,7 +12,7 @@ builder.Services
     .AddSwaggerDocumentation()
     .AddInfrastructure(builder.Configuration)
     .AddRepositories()
-    .AddApplicationUseCases()
+    .AddCQRS()
     .AddCorsPolicies();
 
 var app = builder.Build();

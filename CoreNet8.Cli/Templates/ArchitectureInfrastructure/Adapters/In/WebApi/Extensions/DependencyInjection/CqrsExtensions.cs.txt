@@ -1,0 +1,19 @@
+﻿namespace WebApi.Extensions.DependencyInjection;
+
+public static class CQRSExtensions
+{
+    public static IServiceCollection AddCQRS(this IServiceCollection services)
+    {
+        //services.AddMediatR(cfg =>
+        //{
+        //    // Cuando los hadler habitan en el mismo WebApi
+        //    //cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
+
+        //    // Supplier
+        //    cfg.RegisterServicesFromAssembly(typeof(CreateSupplierCommandHandler).Assembly);
+        //    cfg.RegisterServicesFromAssembly(typeof(GetSupplierByIdQueryHandler).Assembly);
+        //});
+
+        return services;
+    }
+}
