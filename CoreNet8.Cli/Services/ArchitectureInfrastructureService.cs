@@ -153,7 +153,7 @@ public class ArchitectureInfrastructureService
                 )
             );
 
-        // Create class /Extensions/DependencyInjection/ApplicationUseCasesExtensions.cs
+        // Create class /Extensions/DependencyInjection/ResultExtensionsFilePath.cs
         File.WriteAllText(
             resultExtensionsFilePath,
             resultExtensionsContent
@@ -161,32 +161,32 @@ public class ArchitectureInfrastructureService
 
         Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions) ResultExtensions.cs created");
 
-        var applicationUseCasesExtensionsFilePath =
+        var CqrsExtensionsFilePath =
             Path.Combine(
                 filePathBase,
                 "Extensions",
                 "DependencyInjection",
-                "ApplicationUseCasesExtensions.cs"
+                "CqrsExtensions.cs"
             );
 
-        // Read content /Extensions/DependencyInjection/ApplicationUseCasesExtensions.cs.txt
-        string applicationUseCasesExtensionsContent =
+        // Read content /Extensions/DependencyInjection/CqrsExtensions.cs.txt
+        string CqrsExtensionsContent =
             File.ReadAllText(
                 Path.Combine(
                     templatesPathBase,
                     "Extensions",
                     "DependencyInjection",
-                    "ApplicationUseCasesExtensions.cs.txt"
+                    "CqrsExtensions.cs.txt"
                 )
             );
 
-        // Create class /Extensions/DependencyInjection/ApplicationUseCasesExtensions.cs
+        // Create class /Extensions/DependencyInjection/CqrsExtensions.cs
         File.WriteAllText(
-            applicationUseCasesExtensionsFilePath,
-            applicationUseCasesExtensionsContent
+            CqrsExtensionsFilePath,
+            CqrsExtensionsContent
         );
 
-        Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions/DependencyInjection) ApplicationUseCasesExtensions.cs created");
+        Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions/DependencyInjection) CqrsExtensions.cs created");
 
         var corsExtensionsFilePath =
             Path.Combine(
