@@ -20,14 +20,14 @@ public class ArchitectureApplicationService
         // Create SubDirectory Ports/RepositoryEntityFrameworkSqlServer
         ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Application/Ports/RepositoryEntityFrameworkSqlServer"));
 
-        // Create SubDirectory Commons
-        ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Application/Commons"));
+        // Create SubDirectory Results
+        ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Application/Results"));
 
         // Create SubDirectory Services
         ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Application/Services"));
 
-        // Create SubDirectory Features
-        ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Application/Features"));
+        // Create SubDirectory UseCases
+        ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Application/UseCases"));
 
         Console.WriteLine("🛠️  (Application) Build");
         Console.WriteLine("     ⚙️  Base project created");
@@ -45,20 +45,20 @@ public class ArchitectureApplicationService
             Path.Combine("Templates", "ArchitectureApplication", "GlobalUsings.cs.txt")
         );
 
-        // Commons/Result.cs
+        // Results/Result.cs
         ProjectHelper.CreateFileFromTemplate(
             rootPath,
-            Path.Combine("Application", "Commons"),
+            Path.Combine("Application", "Results"),
             "Result.cs",
-            Path.Combine("Templates", "ArchitectureApplication", "Commons", "Result.cs.txt")
+            Path.Combine("Templates", "ArchitectureApplication", "Results", "Result.cs.txt")
         );
 
-        // Application/Commons/ResultType.cs
+        // Application/Results/ResultType.cs
         ProjectHelper.CreateFileFromTemplate(
             rootPath,
-            Path.Combine("Application", "Commons"),
+            Path.Combine("Application", "Results"),
             "ResultType.cs",
-            Path.Combine("Templates", "ArchitectureApplication", "Commons", "ResultType.cs.txt")
+            Path.Combine("Templates", "ArchitectureApplication", "Results", "ResultType.cs.txt")
         );
 
         // Application/Ports/Persistence/IUnitOfWork.cs
@@ -79,8 +79,8 @@ public class ArchitectureApplicationService
         // Remove default Class1.cs
         ProjectHelper.DeleteFileIfExists(Path.Combine(rootPath, "Application/Class1.cs"));
 
-        // Remove .gitkeep from Commons
-        ProjectHelper.DeleteFileIfExists(Path.Combine(rootPath, "Application/Commons/.gitkeep"));
+        // Remove .gitkeep from Results
+        ProjectHelper.DeleteFileIfExists(Path.Combine(rootPath, "Application/Results/.gitkeep"));
 
         // Remove .gitkeep from Persistence
         ProjectHelper.DeleteFileIfExists(Path.Combine(rootPath, "Application/Ports/Persistence/.gitkeep"));

@@ -1,4 +1,4 @@
-﻿global using Application.Commons;
+﻿global using Application.Results;
 global using Application.Ports.RepositoryEntityFrameworkSqlServer;
 global using FluentValidation;
 global using MediatR;
