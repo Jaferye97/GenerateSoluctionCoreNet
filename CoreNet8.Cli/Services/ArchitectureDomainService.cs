@@ -9,25 +9,13 @@ public class ArchitectureDomainService
         Console.WriteLine();
 
         // Create Domain project
-        ProcessHelper.Run(
-            "dotnet",
-            $"new classlib -n Domain -f net8.0",
-            rootPath
-        );
+        ProjectHelper.RunDotNetCommand(rootPath, "new classlib -n Domain -f net8.0");
 
         // Add Domain project to solution
-        ProcessHelper.Run(
-            "dotnet",
-            $"sln add Domain/Domain.csproj",
-            rootPath
-        );
+        ProjectHelper.RunDotNetCommand(rootPath, "sln add Domain/Domain.csproj");
 
         // Create SubDirectory
-        var modelsCommonsPath = Path.Combine(rootPath, "Domain/Models/Commons");
-        var gitKeepPath = Path.Combine(modelsCommonsPath, ".gitkeep");
-
-        Directory.CreateDirectory(modelsCommonsPath);
-        File.WriteAllText(gitKeepPath, string.Empty);
+        ProjectHelper.CreateDirectoryWithGitKeep(Path.Combine(rootPath, "Domain/Models/Commons"));
 
         Console.WriteLine("🛠️  (Domain) Build");
         Console.WriteLine("     ⚙️  Base project created");
@@ -37,100 +25,42 @@ public class ArchitectureDomainService
     {
         Console.WriteLine();
 
-        // Read content GlobalUsings.cs.txt
-        string contentGlobalUsing =
-            File.ReadAllText(
-                Path.Combine("Templates/ArchitectureDomain", "GlobalUsings.cs.txt")
-            );
-
-        // Create class GlobalUsings.cs
-        File.WriteAllText(
-            Path.Combine(
-                rootPath,
-                "Domain",
-                "GlobalUsings.cs"
-            ),
-            contentGlobalUsing
+        // GlobalUsings.cs
+        ProjectHelper.CreateFileFromTemplate(
+            rootPath,
+            "Domain",
+            "GlobalUsings.cs",
+            Path.Combine("Templates", "ArchitectureDomain", "GlobalUsings.cs.txt")
         );
 
-        Console.WriteLine("     📄 (Domain) GlobalUsings.cs created");
-
-        var filePathBaseModelCommons = Path.Combine("Domain", "Models", "Commons");
-
-        var filterModelFilePath =
-            Path.Combine(
-                rootPath,
-                filePathBaseModelCommons,
-                "FilterModel.cs"
-            );
-
-        // Read content FilterModel.cs.txt
-        string contentFilterModel =
-            File.ReadAllText(
-                Path.Combine("Templates",
-                    "ArchitectureDomain",
-                    "Models",
-                    "Commons",
-                    "FilterModel.cs.txt"
-                )
-            );
-
-        // Create class FilterModel.cs
-        File.WriteAllText(
-            filterModelFilePath,
-            contentFilterModel
+        // FilterModel.cs
+        ProjectHelper.CreateFileFromTemplate(
+            rootPath,
+            Path.Combine("Domain", "Models", "Commons"),
+            "FilterModel.cs",
+            Path.Combine("Templates", "ArchitectureDomain", "Models", "Commons", "FilterModel.cs.txt")
         );
 
-        Console.WriteLine("     📄 (Domain/Models/Commons) FilterModel.cs created");
-
-        var pagedResultModelFilePath =
-            Path.Combine(
-                rootPath,
-                filePathBaseModelCommons,
-                "PagedResultModel.cs"
-            );
-
-        // Read content PagedResultModel.cs.txt
-        string contentPagedResultModel =
-            File.ReadAllText(
-                Path.Combine("Templates",
-                    "ArchitectureDomain",
-                    "Models",
-                    "Commons",
-                    "PagedResultModel.cs.txt"
-                )
-            );
-
-        // Create class PagedResultModel.cs
-        File.WriteAllText(
-            pagedResultModelFilePath,
-            contentPagedResultModel
+        // PagedResultModel.cs
+        ProjectHelper.CreateFileFromTemplate(
+            rootPath,
+            Path.Combine("Domain", "Models", "Commons"),
+            "PagedResultModel.cs",
+            Path.Combine("Templates", "ArchitectureDomain", "Models", "Commons", "PagedResultModel.cs.txt")
         );
-
-        Console.WriteLine("     📄 (Domain/Models/Commons) PagedResultModel.cs created");
 
         Console.WriteLine("     ✅ (Domain) Classes created");
     }
 
-    private static void RemovedFiles(string rootPath)
+    private static void RemoveUnnecessaryFiles(string rootPath)
     {
         Console.WriteLine();
 
-        File.Delete(
-                    Path.Combine(
-                        rootPath,
-                        "Domain",
-                        "Class1.cs"
-                    )
-                );
+        // Remove default Class1.cs
+        ProjectHelper.DeleteFileIfExists(Path.Combine(rootPath, "Domain/Class1.cs"));
 
-        File.Delete(
-            Path.Combine(
-                rootPath,
-                "Domain/Models/Commons",
-                ".gitkeep"
-            )
-        );
+        // Remove .gitkeep from Commons
+        ProjectHelper.DeleteFileIfExists(Path.Combine(rootPath, "Domain/Models/Commons/.gitkeep"));
 
         Console.WriteLine("     ♻️  (Domain) Unnecessary files removed");
     }
@@ -140,7 +70,7 @@ public class ArchitectureDomainService
         Console.WriteLine();
         CreateBaseProject(rootPath);
         CreateClasses(rootPath);
-        RemovedFiles(rootPath);
+        RemoveUnnecessaryFiles(rootPath);
     }
 }
 
