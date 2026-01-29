@@ -9,12 +9,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddSwaggerDocumentation()
+    .AddCorsConfiguration()
+    .AddCqrsHandlers()
+    .AddFluentValidationValidators()
     .AddInfrastructure(builder.Configuration)
-    .AddPortsRepositories()
-    .AddCQRS()
-    .AddFluentValidator()
-    .AddCorsPolicies();
+    .AddRepositoryAdapters()
+    .AddSwaggerDocumentation();
 
 var app = builder.Build();
 

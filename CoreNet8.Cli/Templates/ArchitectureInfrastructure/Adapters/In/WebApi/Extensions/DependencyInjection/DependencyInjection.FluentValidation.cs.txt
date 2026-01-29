@@ -1,8 +1,8 @@
 ﻿namespace WebApi.Extensions.DependencyInjection;
 
-public static partial class DependencyInjection 
+public static partial class DependencyInjection
 { 
-    public static IServiceCollection AddFluentValidator(this IServiceCollection services) 
+    public static IServiceCollection AddFluentValidationValidators(this IServiceCollection services) 
     {
         // Supplier Command
         //services.AddValidatorsFromAssemblyContaining<CreateSupplierCommandValidator>(); 

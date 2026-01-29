@@ -2,7 +2,7 @@
 
 public static partial class DependencyInjection
 {
-    public static IServiceCollection AddCQRS(this IServiceCollection services)
+    public static IServiceCollection AddCqrsHandlers(this IServiceCollection services)
     {
         //services.AddMediatR(cfg =>
         //{

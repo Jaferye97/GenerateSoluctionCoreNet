@@ -5,7 +5,7 @@ namespace WebApi.Extensions.DependencyInjection;
 
 public static partial class DependencyInjection
 {
-    public static IServiceCollection AddPortsRepositories(this IServiceCollection services)
+    public static IServiceCollection AddRepositoryAdapters(this IServiceCollection services)
     {
         // UnitOfWork
         services.AddScoped<IUnitOfWork, UnitOfWork>();
