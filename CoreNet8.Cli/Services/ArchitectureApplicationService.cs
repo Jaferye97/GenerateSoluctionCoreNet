@@ -1,4 +1,6 @@
-﻿namespace CoreNet8.Cli.Services;
+﻿using CoreNet8.Cli.Helpers;
+
+namespace CoreNet8.Cli.Services;
 
 public class ArchitectureApplicationService
 {
@@ -7,14 +9,14 @@ public class ArchitectureApplicationService
         Console.WriteLine();
 
         // Create Application project
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"new classlib -n Application -f net8.0",
             rootPath
         );
 
         // Add Application project to solution
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"sln add Application/Application.csproj",
             rootPath

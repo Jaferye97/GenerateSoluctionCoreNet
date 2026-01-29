@@ -1,7 +1,8 @@
 ﻿using CoreNet8.Cli.Commands;
+using CoreNet8.Cli.Helpers;
 using CoreNet8.Cli.Services;
 
-var solutionService = new SolutionService();
+var solutionService = new SolutionHelper();
 
 var architectureApplicationService = new ArchitectureApplicationService();
 var architectureDomainService = new ArchitectureDomainService();
@@ -30,28 +31,28 @@ architectureApplicationService.CreateArchitectureBaseProject(rootPath);
 architectureDomainService.CreateArchitectureBaseProject(rootPath);
 architectureInfrastructureService.CreateArchitectureBaseProject(rootPath);
 
-ProcessService.Run(
+ProcessHelper.Run(
     "dotnet",
     "add Infrastructure/Adapters/In/WebApi/WebApi.csproj reference " +
     "Infrastructure/Adapters/Out/RepositoryEntityFrameworkSqlServer/RepositoryEntityFrameworkSqlServer.csproj",
     rootPath
 );
 
-ProcessService.Run(
+ProcessHelper.Run(
     "dotnet",
     "add Infrastructure/Adapters/Out/RepositoryEntityFrameworkSqlServer/RepositoryEntityFrameworkSqlServer.csproj reference " +
     "Application/Application.csproj",
     rootPath
 );
 
-ProcessService.Run(
+ProcessHelper.Run(
     "dotnet",
     "add Infrastructure/Adapters/Out/RepositoryEntityFrameworkSqlServer/RepositoryEntityFrameworkSqlServer.csproj reference " +
     "Domain/Domain.csproj",
     rootPath
 );
 
-ProcessService.Run(
+ProcessHelper.Run(
     "dotnet",
     "add Application/Application.csproj reference " +
     "Domain/Domain.csproj",
@@ -59,7 +60,7 @@ ProcessService.Run(
 );
 
 // Create .gitignore
-ProcessService.Run("dotnet", "new gitignore", rootPath);
+ProcessHelper.Run("dotnet", "new gitignore", rootPath);
 
 Console.WriteLine();
 Console.WriteLine("🎉 Solution created successfully!");

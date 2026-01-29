@@ -1,5 +1,7 @@
 ﻿
 
+using CoreNet8.Cli.Helpers;
+
 namespace CoreNet8.Cli.Services;
 
 public class ArchitectureInfrastructureService
@@ -20,7 +22,7 @@ public class ArchitectureInfrastructureService
         // Create WebApi project
         var webApiPath = Path.Combine(infraPath, "Adapters", "In");
 
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"new webapi -n WebApi -f net8.0",
             webApiPath
@@ -29,14 +31,14 @@ public class ArchitectureInfrastructureService
         // Create RepositoryEntityFrameworkSqlServer project
         var repositoryEntityFrameworkSqlServerPath = Path.Combine(infraPath, "Adapters", "Out");
 
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"new classlib -n RepositoryEntityFrameworkSqlServer -f net8.0",
             repositoryEntityFrameworkSqlServerPath
         );
 
         // Add WebApi project to solution
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"sln add Infrastructure/Adapters/In/WebApi/WebApi.csproj",
             rootPath
@@ -55,7 +57,7 @@ public class ArchitectureInfrastructureService
         File.WriteAllText(Path.Combine(extensionsMappingPath, ".gitkeep"), string.Empty);
 
         // Add RepositoryEntityFrameworkSqlServer project to solution
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"sln add Infrastructure/Adapters/Out/RepositoryEntityFrameworkSqlServer/RepositoryEntityFrameworkSqlServer.csproj",
             rootPath

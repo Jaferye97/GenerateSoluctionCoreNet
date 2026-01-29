@@ -1,4 +1,6 @@
-﻿namespace CoreNet8.Cli.Services;
+﻿using CoreNet8.Cli.Helpers;
+
+namespace CoreNet8.Cli.Services;
 
 public class ArchitectureDomainService
 {
@@ -7,14 +9,14 @@ public class ArchitectureDomainService
         Console.WriteLine();
 
         // Create Domain project
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"new classlib -n Domain -f net8.0",
             rootPath
         );
 
         // Add Domain project to solution
-        ProcessService.Run(
+        ProcessHelper.Run(
             "dotnet",
             $"sln add Domain/Domain.csproj",
             rootPath

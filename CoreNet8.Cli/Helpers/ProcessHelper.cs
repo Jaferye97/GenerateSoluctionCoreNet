@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 
-namespace CoreNet8.Cli.Services;
+namespace CoreNet8.Cli.Helpers;
 
-public static class ProcessService
+public static class ProcessHelper
 {
     // Executes a system command (e.g., dotnet CLI commands)
     public static void Run(string command, string arguments, string workingDir)
