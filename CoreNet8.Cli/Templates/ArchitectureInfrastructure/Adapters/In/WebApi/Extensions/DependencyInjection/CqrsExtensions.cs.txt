@@ -1,6 +1,6 @@
 ﻿namespace WebApi.Extensions.DependencyInjection;
 
-public static class CQRSExtensions
+public static partial class DependencyInjection
 {
     public static IServiceCollection AddCQRS(this IServiceCollection services)
     {

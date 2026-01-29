@@ -242,32 +242,59 @@ public class ArchitectureInfrastructureService
 
         Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions/DependencyInjection) InfrastructureExtensions.cs created");
 
-        var repositoryExtensionsFilePath =
+        var repositoryPortsExtensionsFilePath =
             Path.Combine(
                 filePathBase,
                 "Extensions",
                 "DependencyInjection",
-                "RepositoryExtensions.cs"
+                "RepositoryPortsExtensions.cs"
             );
 
-        // Read content /Extensions/DependencyInjection/RepositoryExtensions.cs.txt
-        string repositoryExtensionsContent =
+        // Read content /Extensions/DependencyInjection/RepositoryPortsExtensions.cs.txt
+        string repositoryPortsExtensionsContent =
             File.ReadAllText(
                 Path.Combine(
                     templatesPathBase,
                     "Extensions",
                     "DependencyInjection",
-                    "RepositoryExtensions.cs.txt"
+                    "RepositoryPortsExtensions.cs.txt"
                 )
             );
 
-        // Create class /Extensions/DependencyInjection/RepositoryExtensions.cs
+        // Create class /Extensions/DependencyInjection/RepositoryPortsExtensions.cs
         File.WriteAllText(
-            repositoryExtensionsFilePath,
-            repositoryExtensionsContent
+            repositoryPortsExtensionsFilePath,
+            repositoryPortsExtensionsContent
         );
 
-        Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions/DependencyInjection) RepositoryExtensions.cs created");
+        Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions/DependencyInjection) RepositoryPortsExtensions.cs created");
+
+        var fluentValidationExtensionsExtensionsFilePath =
+            Path.Combine(
+                filePathBase,
+                "Extensions",
+                "DependencyInjection",
+                "FluentValidationExtensions.cs"
+            );
+
+        // Read content /Extensions/DependencyInjection/FluentValidationExtensions.cs.txt
+        string fluentValidationExtensionsContent =
+            File.ReadAllText(
+                Path.Combine(
+                    templatesPathBase,
+                    "Extensions",
+                    "DependencyInjection",
+                    "FluentValidationExtensions.cs.txt"
+                )
+            );
+
+        // Create class /Extensions/DependencyInjection/FluentValidationExtensions.cs
+        File.WriteAllText(
+            fluentValidationExtensionsExtensionsFilePath,
+            fluentValidationExtensionsContent
+        );
+
+        Console.WriteLine("     📄 (Infrastructure/Adapters/In/WebApi/Extensions/DependencyInjection) FluentValidationExtensions.cs created");
 
         var swaggerExtensionsFilePath =
             Path.Combine(

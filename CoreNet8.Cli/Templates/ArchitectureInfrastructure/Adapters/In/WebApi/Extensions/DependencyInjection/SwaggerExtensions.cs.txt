@@ -2,7 +2,7 @@
 
 namespace WebApi.Extensions.DependencyInjection;
 
-public static class SwaggerExtensions
+public static partial class DependencyInjection
 {
     public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
     {

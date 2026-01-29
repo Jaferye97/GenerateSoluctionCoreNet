@@ -11,8 +11,9 @@ builder.Services.AddSwaggerGen();
 builder.Services
     .AddSwaggerDocumentation()
     .AddInfrastructure(builder.Configuration)
-    .AddRepositories()
+    .AddPortsRepositories()
     .AddCQRS()
+    .AddFluentValidator()
     .AddCorsPolicies();
 
 var app = builder.Build();

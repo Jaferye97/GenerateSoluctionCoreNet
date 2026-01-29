@@ -3,7 +3,7 @@ using RepositoryEntityFrameworkSqlServer.Context;
 
 namespace WebApi.Extensions.DependencyInjection;
 
-public static class InfrastructureExtensions
+public static partial class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
